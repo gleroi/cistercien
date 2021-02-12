@@ -34,6 +34,13 @@ impl event::EventHandler for MainState {
         )?;
         graphics::draw(ctx, &circle, graphics::DrawParam::default().dest([0.0, 0.0]))?;
 
+        let line = graphics::Mesh::new_line(
+            ctx,
+            &[[10.0,10.0], [10.0, 30.0]],
+            3.0,
+            graphics::Color::from_rgb(255, 0, 0))?;
+        graphics::draw(ctx, &line, graphics::DrawParam::default().dest([0.0,0.0]))?;
+
         graphics::present(ctx)?;
         Ok(())
     }
