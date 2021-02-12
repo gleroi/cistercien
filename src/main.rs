@@ -14,12 +14,14 @@ impl MainState {
 }
 
 impl event::EventHandler for MainState {
-    fn update(&mut self, _ctx: &mut ggez::Context) -> ggez::GameResult {
-        self.pos_x = self.pos_x % 800.0 + 1.0;
+    fn update(&mut self, ctx: &mut ggez::Context) -> ggez::GameResult {
+        let screen = graphics::screen_coordinates(ctx);
+        self.pos_x = self.pos_x % screen.w + 1.0;
         Ok(())
     }
 
     fn draw(&mut self, ctx: &mut ggez::Context) -> ggez::GameResult {
+        let screen = graphics::screen_coordinates(ctx);
         graphics::clear(ctx, [0.1, 0.2, 0.3, 1.0].into());
 
         let circle = graphics::Mesh::new_circle(
